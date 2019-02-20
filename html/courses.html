@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>courses</title>
+	<link rel="stylesheet" type="text/css" href="../css/courses.css">
+	<script type="text/javascript" src="../js/courses.js"></script>
+</head>
+<body onload="showCourses()" >
+	<input type="button" onclick="showCourses()" value="Show Course in Table" />
+    <p id="showData"></p>
+	<!-- Trigger/Open The Modal -->
+		<button id="AddBtn">Add Courses</button>
+
+		<!-- The Modal -->
+		<div id="AddModal" class="modal">
+
+		  <!-- Modal content -->
+		  <div class="modal-content">
+		    <span class="Addclose" style="float: right;">&times;</span>
+		    <p>Add Course Details</p>
+		    <form id="adminpartform">
+		    <input type="text" id="CID" name="cid" placeholder="Course ID">
+		    <input type="text" id="cname" name="Cname" placeholder="Course Name">
+		    <input type="text" id="clink" name="Clink" placeholder="Course Link">
+		    </form>
+		    <input type="button" name="submit" value="AddCourse" onclick="addToC()">
+		  </div>
+
+		</div>
+
+		<button id="RemBtn">Remove Course</button>
+		<!-- The Modal -->
+		<div id="RemModal" class="modal">
+
+		  <!-- Modal content -->
+		  <div class="modal-content">
+		    <span class="Remclose" style="float: right;">&times;</span>
+		    <p>Select Course to Remove</p>
+		    <form id="adminpartform">
+		    <select id="CourseList">
+		    	
+		    </select>
+		    </form>
+		    <input type="button" id="RemoveDataBtn" name="submit" value="Remove">
+		  </div>
+		</div><br><br>
+
+		<button id="AsnBtn">Assign Course</button>
+		<!-- The Modal -->
+		<div id="AsnModal" class="modal">
+
+		  <!-- Modal content -->
+		  <div class="modal-content">
+		    <span class="Asnclose" style="float: right;">&times;</span>
+		    <p>Select Course to Assign</p>
+		    <form id="adminpartform">
+		    <select id="CourseListAssign">
+		    </select><br>
+		    <select id="PartListAssign">
+		    </select><br>
+		    </form>
+		    <input type="button" id="AssignCbtn" name="submit" value="Assign">
+		  </div>
+		</div><br><br>
+
+		<script type="text/javascript">
+			// Get the modal
+            var admodal = document.getElementById("AddModal");
+
+            var rmmodal = document.getElementById("RemModal");
+
+            var asnmodal = document.getElementById("AsnModal");
+
+            // Get the button that opens the modal
+            var Adbtn = document.getElementById("AddBtn");
+
+            var Rmbtn = document.getElementById("RemBtn");
+
+            var Asnbtn = document.getElementById("AsnBtn");
+
+            var removeDataBtn = document.getElementById("RemoveDataBtn");
+
+            var assignCourseBtn = document.getElementById("AssignCbtn");
+
+            // Get the <span> element that closes the modal
+            var Adspan = document.getElementsByClassName("Addclose")[0];
+
+            var Rmspan = document.getElementsByClassName("Remclose")[0];
+
+            var Asnspan = document.getElementsByClassName("Asnclose")[0];
+
+            // Add modal
+            Adbtn.onclick = function() {
+                admodal.style.display = "block";
+            }
+            Adspan.onclick = function() {
+              admodal.style.display = "none";
+            }
+
+            // Remove modal
+
+            Rmbtn.onclick = function() {
+                rmmodal.style.display = "block";    
+                removeDataC();
+            }
+            removeDataBtn.onclick =function(){
+                //alert("Lets Remove");
+                removeDataBtnFunC();
+            }
+            Rmspan.onclick = function() {
+               rmmodal.style.display = "none";
+            }
+
+
+            //Assign modal
+
+            Asnbtn.onclick = function() {
+                asnmodal.style.display = "block";    
+                assigncourse();
+                assignPart();
+            }
+            assignCourseBtn.onclick =function(){
+                //alert("Lets Remove");
+                assignPartBtnFun();
+            }
+            Asnspan.onclick = function() {
+               asnmodal.style.display = "none";
+            }
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+              if (event.target == admodal) {
+                admodal.style.display = "none";
+              }
+              else if (event.target == rmmodal) {
+                rmmodal.style.display = "none";
+              }
+              else if (event.target == asnmodal) {
+                asnmodal.style.display = "none";
+              }
+            }
+	</script>	
+</body>
+</html>

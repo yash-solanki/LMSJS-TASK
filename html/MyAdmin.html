@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="../css/Admin.css">
+	<script type="text/javascript" src="../js/Admin.js"></script>
+</head>
+<body>
+	<input type="button" onclick="showData()" value="Show Data in Table" />
+    <p id="showData"></p>
+
+    <!-- Trigger/Open The Modal -->
+		<button id="AddBtn">Add User</button>
+
+		<!-- The Modal -->
+		<div id="AddModal" class="modal">
+
+		  <!-- Modal content -->
+		  <div class="modal-content">
+		    <span class="Addclose" style="float: right;">&times;</span>
+		    <p>Add User Details</p>
+		    <form id="adminpartform">
+		    <input type="text" id="pcourse" name="pcourses" placeholder="pname" value="" hidden="true">
+            <input type="text" id="pcoursestatus" name="pcourses" placeholder="pname" value="0" hidden="true">
+		    <input type="text" id="pname" name="Pname" placeholder="pname">
+		    <input type="text" id="ppass" name="pass" placeholder="pass">
+		    </form>
+		    <input type="button" name="submit" value="submit" onclick="addTo()">
+		  </div>
+
+		</div>
+
+		<button id="RemBtn">Remove User</button>
+		<!-- The Modal -->
+		<div id="RemModal" class="modal">
+
+		  <!-- Modal content -->
+		  <div class="modal-content">
+		    <span class="Remclose" style="float: right;">&times;</span>
+		    <p>Select User to Remove</p>
+		    <form id="adminpartform">
+		    <select id="userList">	
+		    </select>
+		    </form>
+		    <input type="button" id="RemoveDataBtn"name="submit" value="Remove">
+		  </div>
+		</div><br><br>
+		<input type="button" id="courses" name="courses" value="courses" onclick="courses()">
+
+	<script type="text/javascript">
+		// Get the modal
+            var admodal = document.getElementById("AddModal");
+
+            var rmmodal = document.getElementById("RemModal");
+
+            // Get the button that opens the modal
+            var Adbtn = document.getElementById("AddBtn");
+
+            var Rmbtn = document.getElementById("RemBtn");
+
+            var removeDataBtn = document.getElementById("RemoveDataBtn");
+
+            // Get the <span> element that closes the modal
+            var Adspan = document.getElementsByClassName("Addclose")[0];
+
+            var Rmspan = document.getElementsByClassName("Remclose")[0];
+
+            // When the user clicks the button, open the modal 
+            Adbtn.onclick = function() {
+                admodal.style.display = "block";
+            }
+
+            Rmbtn.onclick = function() {
+                rmmodal.style.display = "block";    
+                removeData();
+            }
+
+            removeDataBtn.onclick =function(){
+                //alert("Lets Remove");
+                removeDataBtnFun();
+            }
+
+            // When the user clicks on <span> (x), close the modal
+            Adspan.onclick = function() {
+              admodal.style.display = "none";
+            }
+
+            Rmspan.onclick = function() {
+               rmmodal.style.display = "none";
+            }
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+              if (event.target == admodal) {
+                admodal.style.display = "none";
+              }
+              else if (event.target == rmmodal) {
+                rmmodal.style.display = "none";
+              }
+            }
+	</script>	
+</body>
+</html>
